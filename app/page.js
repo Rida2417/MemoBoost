@@ -120,29 +120,38 @@ export default function Home() {
 
         {/* Pricing Section */}
         <Box sx={{ my: 6 }}>
-          <Typography variant="h4" align="center" gutterBottom color="primary">Pricing</Typography>
-          <Grid container spacing={4} justifyContent="center">
-            {[{ title: 'Standard', price: '$5 / Month', description: 'Get the Standard flashcard features with more storage' },
-            { title: 'Professional', price: '$10 / Month', description: 'Get perfect flashcard features with unlimited storage' }]
-              .map((plan) => (
-                <Grid item xs={12} md={4} key={plan.title}>
-                  <Box sx={{
-                    p: 3, m: 2,
-                    border: '1px solid #333', borderRadius: 2,
-                    textAlign: 'center',
-                    backgroundColor: theme.palette.background.paper,
-                    transition: '0.3s',
-                    '&:hover': { boxShadow: 6, backgroundColor: '#333' }
-                  }}>
-                    <Typography variant="h4" gutterBottom color="primary">{plan.title}</Typography>
-                    <Typography variant="h6" gutterBottom color="textSecondary">{plan.price}</Typography>
-                    <Typography variant="body1" color="textSecondary">{plan.description}</Typography>
-                    <Button variant="contained" color="primary" sx={{ mt: 2 }} onClick={handleSubmit}>Choose Now</Button>
-                  </Box>
-                </Grid>
-              ))}
-          </Grid>
-        </Box>
+      <Typography variant="h4" align="center" gutterBottom color="primary">Pricing</Typography>
+      <Grid container spacing={4} justifyContent="center">
+        {[{ title: 'Basic', price: '$0 / Month', description: 'Get the basic flashcard features with limited storage', button: (
+          <Link href="/generate" passHref>
+            <Button color="primary" variant="contained" sx={{ mt: 2, textDecoration: 'none' }}>
+              Choose Now
+            </Button>
+          </Link>
+        )},
+          { title: 'Standard', price: '$5 / Month', description: 'Get the Standard flashcard features with more storage', onClick: handleSubmit },
+          { title: 'Professional', price: '$10 / Month', description: 'Get perfect flashcard features with unlimited storage', onClick: handleSubmit }]
+          .map((plan) => (
+            <Grid item xs={12} md={4} key={plan.title}>
+              <Box sx={{
+                p: 3, m: 2,
+                border: '1px solid #333', borderRadius: 2,
+                textAlign: 'center',
+                backgroundColor: theme.palette.background.paper,
+                transition: '0.3s',
+                '&:hover': { boxShadow: 6, backgroundColor: '#333' }
+              }}>
+                <Typography variant="h4" gutterBottom color="primary">{plan.title}</Typography>
+                <Typography variant="h6" gutterBottom color="textSecondary">{plan.price}</Typography>
+                <Typography variant="body1" color="textSecondary">{plan.description}</Typography>
+                {plan.button ? plan.button : (
+                  <Button variant="contained" color="primary" sx={{ mt: 2 }} onClick={plan.onClick}>Choose Now</Button>
+                )}
+              </Box>
+            </Grid>
+          ))}
+      </Grid>
+    </Box>
       </Container>
     </ThemeProvider>
   );
