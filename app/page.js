@@ -41,7 +41,7 @@ export default function Home() {
   const handleSubmit = async () => {
     const checkoutSession = await fetch('/api/checkout_sessions', {
       method: 'POST',
-      headers: { origin: 'https://memo-boost.vercel.app/' },
+      headers: { origin: 'http://localhost:3000' },
     });
     const checkoutSessionJson = await checkoutSession.json();
 
