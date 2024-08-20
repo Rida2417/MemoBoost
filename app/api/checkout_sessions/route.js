@@ -23,7 +23,7 @@ export async function GET(req) {
     }
   }
 export async function POST(req) {
-    const origin = req.headers.origin || process.env.NEXT_PUBLIC_BASE_URL || "https://memo-boost-git-main-rida-tayyabs-projects.vercel.app/";
+    const origin = req.headers.origin || process.env.NEXT_PUBLIC_BASE_URL || "https://memo-boost.vercel.app/";
 
     const params = {
         payment_method_types: ['card'],
